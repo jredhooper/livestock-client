@@ -1,0 +1,15 @@
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-menu">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="field is-grouped">
+                    <form #f="ngForm" (ngSubmit)="login(f)" novalidate>
+                        <input class="input" type="text" placeholder="Your username" name="username" ngModel required
+                            #username="ngModel" uppercase>
+                        <button class="is-light">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

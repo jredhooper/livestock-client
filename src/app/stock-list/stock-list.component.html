@@ -1,0 +1,73 @@
+<app-login></app-login>
+
+<div class="section">
+    <div class="columns">
+        <div class="column">
+            <div class="notification is-primary">
+                <p>
+                    Here you'll find the stocks to which you've subscribed. Add stocks above to subscribe to price
+                    changes,
+                    asks, bids and otherwise to be displayed on the right.
+                </p>
+            </div>
+            <div class="notification">
+                <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <input [disabled]="!username" class="input" type="text" placeholder="Ticker Symbol"
+                                name="symbol" ngModel required #symbol="ngModel">
+                        </div>
+                        <button>Subscribe</button>
+                    </div>
+                </form>
+            </div>
+            <div class="notification is-warning" [style.visibility]="!username ? 'visible' : 'hidden'">You need to
+                'log in'
+                first (top right)
+            </div>
+            <hr />
+
+            <div class="notification is-info" [style.visibility]="!username ? 'hidden' : 'visible'">
+                Type in uppercase ( avoid a bug )
+            </div>
+
+            <div class="notification is-info" [style.visibility]="!username ? 'hidden' : 'visible'">
+                Only log in once ( avoid a bug )
+            </div>
+        </div>
+        <div class="column is-two-thirds">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Ticker</th>
+                        <th>Ask</th>
+                        <th>Ask Size</th>
+                        <th>Bid</th>
+                        <th>Bid Size</th>
+                        <th>Price</th>
+                        <th>Volume</th>
+                        <th>Open (day)</th>
+                        <th>Low (day)</th>
+                        <th>High (day)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of stocks | keyvalue">
+                        <td>{{item.value.symbol}}</td>
+                        <td>{{item.value.ask}}</td>
+                        <td>{{item.value.askSize}}</td>
+                        <td>{{item.value.bid}}</td>
+                        <td>{{item.value.bidSize}}</td>
+                        <td>{{item.value.price}}</td>
+                        <td>{{item.value.volume}}</td>
+                        <td>{{item.value.open}}</td>
+                        <td>{{item.value.dayLow}}</td>
+                        <td>{{item.value.dayHigh}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+</div>
